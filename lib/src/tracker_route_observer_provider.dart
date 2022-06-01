@@ -3,11 +3,11 @@ import 'tracker_route_observer.dart';
 
 class TrackerRouteObserverProvider extends InheritedWidget {
 
-  final TrackerStackObserver<ModalRoute> trackerStackObserver = TrackerStackObserver<ModalRoute>();
+  final TrackerStackObserver<ModalRoute?> trackerStackObserver = TrackerStackObserver<ModalRoute?>();
 
   TrackerRouteObserverProvider({
-    Key key,
-    @required Widget child,
+    Key? key,
+    required Widget child,
   }): super(key: key, child: child);
 
   @override
@@ -15,10 +15,10 @@ class TrackerRouteObserverProvider extends InheritedWidget {
     return false;
   }
 
-  static TrackerStackObserver<ModalRoute> of(BuildContext context) {
+  static TrackerStackObserver<ModalRoute?>? of(BuildContext context) {
     try {
       return context
-          .dependOnInheritedWidgetOfExactType<TrackerRouteObserverProvider>()
+          .dependOnInheritedWidgetOfExactType<TrackerRouteObserverProvider>()!
           .trackerStackObserver;
     } catch (err) {
       return null;
